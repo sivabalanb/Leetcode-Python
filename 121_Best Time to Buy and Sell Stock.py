@@ -1,15 +1,13 @@
-#121. Best Time to Buy and Sell Stock - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+# https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        min_price, max_profit = max(prices), 0
-        
-        for val in prices:
-            if val < min_price:
-                min_price = val
-            max_profit = max(max_profit, val - min_price)
-            # elif val - min_price > max_profit:
-            #     max_profit = val - min_price
-            #print(f"val {val} min_price {min_price} max_profit {max_profit}")
-                
+        min_price = float('inf')
+        max_profit = 0
+
+        for price in prices:
+            if price < min_price:
+                min_price = price
+            else:
+                max_profit = max(max_profit, price - min_price)
         return max_profit
